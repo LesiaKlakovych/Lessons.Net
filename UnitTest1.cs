@@ -7,13 +7,9 @@ namespace Task1UnitTests
     [TestClass]
     public class Task1Tests
     {
-       static private TestContext contextInstance;
+       private TestContext contextInstance;
 
-        [ClassInitialize]
-        public static void ClassInit(TestContext con)
-        {
-            contextInstance  = con;
-        }
+        public TestContext TestContext { get => contextInstance; set => contextInstance = value; }
 
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", 
                     "|DataDirectory|\\data.csv", "data#csv", DataAccessMethod.Sequential),
@@ -21,8 +17,8 @@ namespace Task1UnitTests
         public void AreDigitsDifferentTest()
         {
             //Arrange
-            uint testnumber = uint.Parse(contextInstance.DataRow["number"].ToString());
-            bool expected = bool.Parse(contextInstance.DataRow["result"].ToString());
+            uint testnumber = uint.Parse(TestContext.DataRow["number"].ToString());
+            bool expected = bool.Parse(TestContext.DataRow["result"].ToString());
             //Act
             bool actual = Task1.AreDigitsDifferent(testnumber);
             //Assert
