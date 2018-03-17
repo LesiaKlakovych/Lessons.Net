@@ -1,0 +1,6 @@
+number,result
+1,true
+45,true
+123456,true
+123136,false
+232,false
